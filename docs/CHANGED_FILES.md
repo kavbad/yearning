@@ -56,3 +56,40 @@ The repository was empty before this work. All listed files are newly added; no 
 - `tests/unit/experience.test.ts`
 - `tsconfig.json`
 - `vitest.config.ts`
+
+## Reference correction after founder rejection
+
+The first visual implementation at commit 462b504 was rejected. This revision changes the following files; all runtime changes were validated in the final 16-case browser suite. Generated originals remain outside the checkout; optimized production materials and provenance are committed.
+
+- `ASSET_REQUESTS.md`
+- `app/globals.css`
+- `app/layout.tsx`
+- `components/experience/Experience.tsx`
+- `components/experience/InkWordmark.tsx`
+- `components/experience/PaperSurface.tsx`
+- `components/experience/WatercolorOrb.tsx`
+- `docs/ARCHITECTURE.md`
+- `docs/ART_DIRECTION.md`
+- `docs/CHANGED_FILES.md`
+- `docs/IMPLEMENTATION_STATUS.md`
+- `docs/RUNBOOK.md`
+- `docs/VISUAL_REVIEW.md`
+- `docs/review/desktop-landing.png`
+- `docs/review/desktop-named.png`
+- `docs/review/laptop-landing.png`
+- `docs/review/laptop-named.png`
+- `docs/review/mobile-landing.png`
+- `docs/review/mobile-named.png`
+- `docs/review/reference-landing.png`
+- `docs/review/reference-named.png`
+- `lib/visualConfig.ts`
+- `playwright.config.ts`
+- `public/fonts/provenance.json`
+- `public/materials/README.md`
+- `public/materials/cotton-paper-mobile.webp`
+- `public/materials/cotton-paper.webp`
+- `public/materials/provenance.json`
+- `public/materials/watercolor-bloom.webp`
+- `public/materials/yearning-ink.webp`
+- `public/references/README.md`
+- `tests/e2e/experience.spec.ts`

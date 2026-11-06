@@ -1,13 +1,23 @@
-# Art direction · temporary reference interpretation
+# Art direction · reference correction
 
-Source of truth: YEARning_CODEX_SPEC.md, read completely before implementation. The supplied 1671×941 conversation image establishes warm paper, central ink lettering, spacious composition, and a rose/indigo Begin wash. Its original image binary is not available inside the checkout; it has been visually inspected in the conversation. No approved isolated production assets were supplied.
+The founder rejected the first M1 landing. Its generic font treatment, faint procedural paper, blurred radial washes and extra footer copy did not match the supplied reference. Functional test results did not satisfy the artistic gate. The current revision uses the image's material, composition and expressive ink as the visual target.
 
-We follow the written instruction for nearly white, subtle cotton paper rather than reproducing the image's much heavier torn/stained borders. The central wordmark is above the midpoint; the tagline and invitation sit separately beneath it. No navigation, cards, hero imagery, conversation log, progress indicators, palette controls, or decorative illustrations have been added.
+## Current material system
 
-Temporary assets: self-hosted Pinyon Script for wordmark and names; Cormorant Garamond Italic for supporting copy. Both are SIL OFL with licenses in public/fonts. These are licensed approximations, not a reconstruction of the approved lettering. Unicode uses platform serif fallbacks where these fonts lack coverage; typography across all scripts requires founder-selected fonts.
+- Landscape paper is a generated cotton-paper image with physical fibers, softly lit deckled edges and muted rose, slate and ochre around the perimeter. The center remains blank. No text, buttons or other UI are baked into it.
+- Mobile uses a separately generated portrait composition of the same paper. It keeps natural material scale and peripheral pigment rather than stretching or slicing the desktop image.
+- The `yearning.` wordmark is a separate transparent illustration: uneven sepia/plum ink density, open italic letterforms, a long descending y and flourishing g. It is no longer a generic font rendered with a tint. It is newly generated review artwork, not the original approved wordmark or a reconstructed licensed font.
+- Arbitrary names remain real selectable Unicode text, using self-hosted OFL Cormorant Garamond Italic with a fiber-density filter and muted umber/plum variation. The name font is not claimed to be identical to the illustrated wordmark. Pinyon, used in the rejected first revision, is retired from the UI.
+- The invitation and voice orb share one transparent watercolor image. It contains irregular capillary edges, pigment pooling, granulation and overlapping rose/ochre/indigo washes. The initial wash gathers into a smaller, more circular organic shape without an abrupt asset replacement. There is no blurred gradient orb.
 
-Paper uses seeded SVG fractal grain, fine CSS fibers and restrained peripheral washes. The orb uses seeded, displaced pigment layers with multiply grain, irregular edges and local low-frequency movement. Invitation and orb share the same SVG and viewport container. The invitation lettering dissolves as its pigment contracts; no particles or glowing ring. Wordmark replacement uses a spatial ink clip, feathering and an outgoing absorption layer, not a generic text shadow or image fade.
+## Reference composition
 
-The fixed protected region is free of artwork. Long names wrap and scale within it. Motion reduction removes reveal and pigment animations. No continuous artwork engine is claimed; stroke order and cumulative motifs belong to M3/M4.
+The exact 1671×941 reference viewport is now included in browser QA, in addition to desktop, laptop and mobile. The name anchor is centered at 38% of viewport height, tagline around 51%, and invitation at 69.5%. Wordmark artwork occupies approximately 36% of viewport width before its transparent margins. The initial screen has only the wordmark, tagline and Begin visibly present. The mock disclosure is accessible through Begin's description and becomes visible after activation.
 
-Review screenshots in test-results for desktop 1440×900, laptop 1280×800 and mobile 390×844. These are candidate artifacts, not approved golden masters. Founder approval and exact production-asset matching remain open.
+The supporting tagline and Begin use the lighter Cormorant italic, avoiding the heavier experimental Fell italic. An internal review rejected that heavier face before final capture. On mobile, the name anchor is 37% and invitation 66.5%, with safe space for calligraphic descenders and captions. Name changes do not reposition either anchor.
+
+## Motion and review boundaries
+
+Spatial absorption and reveal masks transition from the wordmark artwork into live name text. The reveal finishes before the state settles so QA captures a complete name. Pigment layers drift subtly within the fixed orb. Reduced motion removes these animations.
+
+Material provenance, hashes, source descriptions and conversion details are in public/materials. These images are generated candidates. Original founder-approved isolated assets remain unavailable; founder visual approval remains OPEN. Exact pixel comparison is not claimed without the original source binary. Review the actual captured screen rather than treating assets, unit tests, or layout assertions as evidence of artistic acceptance.

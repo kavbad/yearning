@@ -13,3 +13,5 @@ Production smoke: `npm run build`, `npm start`, then request `/` locally and exe
 No paid integrations are configured. For M2, inspect current official OpenAI GA WebRTC docs and implement a server credential boundary before requesting live credentials. Deploy/queue/storage/billing configuration is deferred to the corresponding milestone.
 
 Browser suite builds and starts production code (`npm run test:e2e`), avoiding development hot reloads during screenshots. Typecheck first generates Next.js route types so it also works from a fresh checkout.
+
+The reference correction adds no dependencies or services. Material artwork lives in public/materials with provenance. The browser matrix now includes the original reference size (1671×941), and all eight landing/name captures are retained in docs/review. For a guaranteed fresh production test, stop only app servers you started and use `CI=true npm run test:e2e`; the suite then refuses to reuse an existing server. Do not treat the rejected first revision's screenshots as approved baselines.

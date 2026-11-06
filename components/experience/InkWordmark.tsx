@@ -1,10 +1,17 @@
-import { displayName } from "@/lib/experience/state";
+import { displayName, type Phase } from "@/lib/experience/state";
+
+function WordmarkArtwork({ className = "" }: { className?: string }) {
+  return (
+    <span aria-hidden="true" className={`wordmark-artwork ${className}`} />
+  );
+}
+
 export function InkWordmark({
   name,
   phase,
 }: {
   name: string | null;
-  phase: string;
+  phase: Phase;
 }) {
   const text = name ? displayName(name) : "yearning.";
   const length = Array.from(text).length;
@@ -12,17 +19,24 @@ export function InkWordmark({
     <div className="name-anchor" data-testid="name-anchor">
       <h1
         aria-label={text}
-        className={`ink-wordmark ${name ? "personal-name" : ""} ${length > 18 ? "long-name" : ""} ${length > 40 ? "very-long-name" : ""}`}
+        className={`ink-wordmark ${name ? "personal-name" : "brand-name"} ${length > 18 ? "long-name" : ""} ${length > 40 ? "very-long-name" : ""}`}
         data-phase={phase}
       >
-        {phase === "absorbing" && (
-          <span aria-hidden="true" className="absorbing-wordmark">
-            yearning.
-          </span>
+        {!name ? (
+          <>
+            <span className="sr-only">yearning.</span>
+            <WordmarkArtwork />
+          </>
+        ) : (
+          <>
+            {phase === "absorbing" && (
+              <WordmarkArtwork className="absorbing-wordmark" />
+            )}
+            <span key={name} className="ink-letters" dir="auto">
+              {text}
+            </span>
+          </>
         )}
-        <span key={name ?? "wordmark"} className="ink-letters">
-          {text}
-        </span>
       </h1>
     </div>
   );

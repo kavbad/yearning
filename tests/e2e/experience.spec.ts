@@ -3,6 +3,23 @@ import AxeBuilder from "@axe-core/playwright";
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
+  // Font readiness alone does not establish material-asset readiness.
+  await page.evaluate(async () => {
+    const urls = [
+      "/materials/yearning-ink.webp",
+      "/materials/watercolor-bloom.webp",
+      matchMedia("(max-width: 600px)").matches
+        ? "/materials/cotton-paper-mobile.webp"
+        : "/materials/cotton-paper.webp",
+    ];
+    await Promise.all(
+      urls.map(async (src) => {
+        const image = new Image();
+        image.src = src;
+        await image.decode();
+      }),
+    );
+  });
 });
 test("landing, name reveal, anchor invariants, captions, accessibility", async ({
   page,
@@ -12,6 +29,10 @@ test("landing, name reveal, anchor invariants, captions, accessibility", async (
   await expect(page.getByRole("heading")).toHaveText("yearning.");
   await expect(page.getByRole("button")).toHaveCount(1);
   await expect(page.getByRole("textbox")).toHaveCount(0);
+  await expect(page.locator(".demo-note")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Begin", exact: true }),
+  ).toHaveAccessibleDescription(/Voice is mocked/);
   await page.waitForTimeout(2300);
   await page.screenshot({
     path: `test-results/${info.project.name}-landing.png`,
@@ -75,7 +96,7 @@ test("reduced motion and no audio collection", async ({ page }) => {
   await expect(page.getByRole("status")).toHaveText("What should I call you?");
   expect(
     await page
-      .locator(".pigment-rose")
+      .locator(".pigment-body")
       .evaluate((el) => getComputedStyle(el).animationName),
   ).toBe("none");
   expect(requests).toEqual([]);

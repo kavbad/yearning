@@ -1,56 +1,52 @@
 # Implementation status
 
-## Scope
+## Current scope and artistic status
 
-Read the complete supplied YEARning_CODEX_SPEC.md; retained verbatim beside this report. Implemented the M0 foundation and an M1 founder-review candidate. M2–M8 are intentionally unimplemented. The product is not complete.
+M0 foundation plus M1 visual study. M2–M8 remain unimplemented. The complete supplied specification is retained verbatim beside this report.
 
-## M0 — verified for the local mock workflow
+The founder rejected the first landing at commit 462b504. Its functional tests passed, but its font/noise/gradient interpretation missed the supplied image. That version is not an approved baseline. The current revision rebuilds the landing around the reference's physical paper, ink, watercolor and composition. Founder artistic approval remains OPEN.
 
-- Next.js App Router, React, strict TypeScript, exact dependency pins and npm lockfile; Node 24.
-- Bespoke surface components; visualConfig tokens; runtime-validated names and explicit state reducer.
-- VoiceAdapter contract and deterministic, text-driven MockVoiceAdapter; no paid API keys or microphone required.
-- Initial Drizzle PostgreSQL schema and generated migration: users, sessions, ordered events, snapshots. Not connected or applied to a database; full product schema and authorization are deferred.
-- Vitest, Playwright, axe, production build, CI artifact retention; self-hosted OFL fonts and provenance hashes.
-- Architecture, art direction, runbook, privacy boundary, visual inventory, exact changed-file manifest, asset requests and original specification.
+## Current M1 revision
 
-## M1 — implemented, artistic gate pending founder approval
+- Separate generated landscape cotton-paper material, transparent textured ink wordmark and transparent watercolor pigment wash. No UI text or controls are baked into the paper background.
+- Independently generated portrait paper for mobile; preserved deckled edges, physical fibers and corner pigment without desktop image splicing.
+- Reference-proportioned wordmark and prominent descending y/g swashes, lighter supporting italic, larger granulated watercolor invitation and generous whitespace.
+- Initially only wordmark, tagline and Begin are visible. Mock disclosure is accessible through Begin and appears visibly after activation.
+- Shared pigment surface gathers into a small organic orb; no abrupt switch to a different asset.
+- Outgoing illustrated wordmark absorption and live arbitrary-name reveal. Name/orb anchors stay fixed; reveal settles only after the lettering is fully visible.
+- Selectable Unicode names, long-name handling, system-script fallbacks, keyboard operation and reduced motion remain supported.
+- Pinyon is retired from the UI. Cormorant Garamond Italic supplies live names/supporting text with fiber-density treatment. This font is not claimed to match the illustrated wordmark exactly.
+- Source descriptions, generated-asset status, hashes and format conversion are recorded in public/materials. These assets are candidates, not original founder-approved sources.
 
-- Tactile procedural paper, restrained peripheral pigment, calligraphic lettering with ink density treatment.
-- Single tagline and Begin invitation, continuous shared watercolor surface contracting into a small orb.
-- Mock first question, disappearing ephemeral caption, post-Begin demo name entry; no landing textbox or chat log.
-- Spatial name reveal and outgoing ink absorption; fixed name/orb anchor containers.
-- Arbitrary Unicode names, long-name wrapping/scaling, keyboard access, mobile safe zones and reduced motion.
-- Six current candidate screenshots retained in docs/review: landing/post-name at 1440×900, 1280×800, 390×844. Visually inspected desktop and mobile candidates; mobile calligraphic overhang corrected.
+## Final verification of this revision
 
-## Final verification
+- `npm run typecheck`: passed, including Next.js route-type generation.
+- `npm run lint`: passed.
+- `npm test`: all 15 unit tests passed; no skips.
+- `CI=true npm run test:e2e`: production build passed, all 16 browser tests passed; no skips. The prior app server was stopped first, so the suite used a fresh production server rather than stale application code.
+- Browser matrix: exact reference size 1671×941, desktop 1440×900, laptop 1280×800, mobile 390×844.
+- Browser coverage: material assets decode successfully; minimal initial screen; accessible mock disclosure; keyboard Begin; first question; Kavon reveal; unchanged name/orb bounding boxes; no chat log; no page errors; zero axe violations on post-name surface; no viewport scrolling; Arabic/CJK/long names; reduced motion; no API/audio collection; caption expiry.
+- Eight current captures are retained in docs/review: landing/post-name at all four viewports. Desktop reference-size, mobile and name captures were visually inspected; the heavier experimental italic was rejected internally and replaced before the final suite.
+- No approved golden baseline or exact pixel-match score is claimed. The original reference was visually supplied in the conversation; its original binary is not available for automated image diffing.
 
-- `npm ci --ignore-scripts`: passed; lockfile reproduces the dependency set.
-- `npm run typecheck`: passed, including route-type generation.
-- `npm run lint`: passed with no errors.
-- `npm test`: 15 tests passed, no skips.
-- `npm run test:e2e`: production build passed, all 12 browser tests passed, no skips.
-- Browser coverage: initial minimal surface, keyboard Begin, first question, Kavon reveal, exact unchanged name/orb bounding boxes, no chat log, no page errors, zero axe violations on named surface, no viewport scrolling, Arabic/CJK/long names, reduced motion, no API requests, mock disclosure, caption expiry.
-- `npm run db:generate`: initial SQL migration generated successfully; no database integration test claimed.
-- App startup verified by Playwright production webServer and functional browser interactions.
+## M0 retained foundation
 
-## Diagnosed earlier failures
+Next.js App Router, React, strict TypeScript, exact dependency pins, npm lockfile, Node 24, runtime name validation and explicit experience reducer. VoiceAdapter and text-driven MockVoiceAdapter require no paid keys. Initial Drizzle PostgreSQL schema/migration covers users, sessions, ordered events and snapshots. The database is not connected or migrated, and full product tables, auth/RLS and server persistence are deferred. CI retains browser review artifacts; no hosted CI run is claimed by these local results.
 
-Initial sandboxed server/build attempts lacked required process/network capabilities. Running supported commands outside the command sandbox resolved compiler/server execution. The default Turbopack development path displayed a static page but did not advance Begin; Webpack development and production paths were verified and explicitly selected. An earlier mobile test was interrupted by a dev-server restart during formatting; final acceptance runs use stable production code. A lint violation from synchronous effect state updates was fixed by clearing state in the transcript callback. These earlier results are superseded by the complete passing final run, not hidden or accepted failures.
+The original frozen dependency reinstall and database migration generation passed during M0. This revision adds no dependencies or service requirements. Reusable installation/startup instructions remain valid.
 
 ## Remaining limitations
 
-- M1's screenshot comparison/manual approval gate is OPEN. Candidate captures are not approved golden baselines. The conversation reference was visually available but its original binary was not available for automated pixel comparison.
-- Approved isolated wordmark, paper, orb, and arbitrary-name typography are missing. Current assets are explicitly temporary approximations. See ASSET_REQUESTS.md and VISUAL_REVIEW.md for exact deviations.
-- Unicode font coverage partly relies on OS fallback fonts; the local machine has Arabic and CJK fonts. Brand-approved cross-platform fallback typography still needs selection.
-- No real voice, live audio, recording, saved conversation, art scene, paid billing, generated website, deployment, or publication is claimed. Name state is intentionally memory-only in this review study.
-- No fluid simulation or exact approved ink shader reproduction is claimed. Procedural masks and pigment layers need founder calibration with source assets.
-- The full product database, workers and provider integrations are future milestones. Initial SQL has not been migrated into a live database.
-- CI is configured, but no hosted CI run is claimed by local validation.
+- Founder visual approval is still required. Do not call the artistic gate passed because the functional suite is green.
+- Original approved isolated wordmark, paper, orb and intended arbitrary-name typography remain unavailable. Newly generated candidate materials and exact reproduction needs are documented in ASSET_REQUESTS.md, ART_DIRECTION.md and VISUAL_REVIEW.md. Missing originals are not used to justify simplifying the supplied visual guidance.
+- Live-name font and generated wordmark letterforms differ. Cross-platform Arabic/CJK typography relies partly on OS fallbacks.
+- No real voice/audio, microphone access, persisted conversation, continuous drawing, billing, generated website, deployment or publication is implemented. Names remain memory-only in this review study.
+- No physical fluid simulation, original font reconstruction, or exact recreation of approved ink shaders is claimed.
 
 ## Environment reuse
 
-Saved `install_script` and `start_skill` in the environment draft. They install with the frozen lockfile, generate types/build, and start the mock application in the existing checkout without creating worktrees. Saving is confirmed; the draft is not applied or published by that save. Review and save in environment settings, then publish the prepared environment when desired. Fresh-task restoration has not been independently verified.
+Saved install_script and start_skill prepare/build/start the app in the existing checkout without worktrees. They require no changes for this revision. Processes do not survive snapshots. Draft persistence was previously confirmed; configuration publication and fresh-task restoration are not claimed. Run `npm run demo` for development or `npm start` for the current production build. See RUNBOOK.md.
 
 ## Next task
 
-Founder review of docs/review screenshots and the interactive M1 study; supply/approve the missing reference assets and calibrate typography, texture and pigment. Only after that artistic review proceed to M2's real GA WebRTC permission/voice/caption/recovery work and exercise an actual microphone round trip with credentials.
+Founder review of the revised reference-size/mobile screens and interactive name transition. Continue artistic calibration or incorporate approved source assets based on that review. Do not advance into live voice or website generation merely because the functional checks pass.

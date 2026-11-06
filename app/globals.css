@@ -1,9 +1,4 @@
 @font-face {
-  font-family: Pinyon;
-  src: url("/fonts/PinyonScript-Regular.ttf") format("truetype");
-  font-display: swap;
-}
-@font-face {
   font-family: Cormorant;
   src: url("/fonts/CormorantGaramond-Italic.ttf") format("truetype");
   font-style: italic;
@@ -12,7 +7,7 @@
 }
 :root {
   color-scheme: light;
-  --paper: #fbf8f3;
+  --paper: #f7ecdd;
   --ink: #65483f;
 }
 * {
@@ -34,14 +29,15 @@ input {
 }
 button {
   cursor: pointer;
+  touch-action: manipulation;
+}
+button:disabled {
+  cursor: default;
 }
 button:focus-visible,
 input:focus-visible {
-  outline: 1px solid #795c53;
-  outline-offset: 7px;
-}
-button {
-  touch-action: manipulation;
+  outline: 1px solid #65483f;
+  outline-offset: 8px;
 }
 .experience {
   position: relative;
@@ -55,61 +51,9 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse at 45% 35%, #fffdf7b0, transparent 65%),
-    radial-gradient(ellipse at 10% 90%, #dfc6a922, transparent 60%), #fbf8f3;
-}
-.paper:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 100px #a57b4820;
-  background: repeating-linear-gradient(
-    3deg,
-    transparent 0 3px,
-    #b5a08d05 4px,
-    transparent 5px 9px
-  );
+  background: var(--paper) url("/materials/cotton-paper.webp") center/100% 100%
+    no-repeat;
   pointer-events: none;
-}
-.paper-grain {
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: multiply;
-  opacity: 0.5;
-}
-.edge-wash {
-  position: absolute;
-  filter: url(#wet-edge);
-  opacity: 0.24;
-  pointer-events: none;
-}
-.edge-wash-north {
-  width: 430px;
-  height: 210px;
-  left: -130px;
-  top: -130px;
-  background: radial-gradient(
-    ellipse at 65% 30%,
-    #c8977c 15%,
-    #c8a0a2 40%,
-    transparent 70%
-  );
-  transform: rotate(-24deg);
-}
-.edge-wash-south {
-  width: 480px;
-  height: 230px;
-  right: -160px;
-  bottom: -155px;
-  background: radial-gradient(
-    ellipse at 40% 70%,
-    #c18d81 8%,
-    #9191a3 36%,
-    #d8b89c 50%,
-    transparent 70%
-  );
-  transform: rotate(-20deg);
 }
 .ink-filters {
   position: absolute;
@@ -121,55 +65,78 @@ button {
   top: var(--name-y);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(88vw, 960px);
-  height: 200px;
+  width: min(90vw, 1000px);
+  height: 220px;
   display: grid;
   place-items: center;
 }
 .ink-wordmark {
-  font-family: Pinyon, Cormorant, "Noto Serif", serif;
-  font-size: clamp(104px, 10.8vw, 170px);
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: 0.015em;
-  margin: 0;
-  text-align: center;
+  position: relative;
   width: 100%;
+  margin: 0;
+  font-family: Cormorant, "Noto Serif CJK SC", "Noto Naskh Arabic", serif;
+  font-style: italic;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.18;
+  letter-spacing: 0.045em;
   text-wrap: balance;
+}
+.brand-name {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.wordmark-artwork {
+  display: block;
+  width: clamp(320px, 36vw, 630px);
+  aspect-ratio: 2176/723;
+  background: url("/materials/yearning-ink.webp") center/contain no-repeat;
+}
+.personal-name {
+  font-size: clamp(80px, 8.3vw, 138px);
 }
 .ink-letters {
   display: block;
   filter: url(#ink-density);
+  animation: ink-reveal 1.65s 0.25s both;
   transform: rotate(-3deg);
-  transform-origin: center;
-  animation: ink-arrival 2.2s both;
-}
-.personal-name {
-  font-size: clamp(78px, 9vw, 140px);
+  background: linear-gradient(104deg, #694536 25%, #51414e 44%, #714d3c 74%);
+  background-clip: text;
+  color: transparent;
 }
 .long-name {
-  font-size: clamp(34px, 5vw, 74px);
-  line-height: 1.2;
+  font-size: clamp(35px, 4.8vw, 72px);
 }
 .very-long-name {
-  font-size: clamp(24px, 3.4vw, 48px);
+  font-size: clamp(24px, 3.1vw, 46px);
   overflow-wrap: anywhere;
+}
+.absorbing-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ink-absorb 1.4s both;
+  pointer-events: none;
 }
 .tagline {
   position: absolute;
-  top: 49%;
-  left: 0;
-  width: 100%;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-1deg);
+  width: max-content;
+  max-width: 90vw;
   text-align: center;
   margin: 0;
   font:
-    italic 400 clamp(23px, 2.5vw, 35px)/1.6 Cormorant,
+    italic 400 clamp(24px, 2.35vw, 39px)/1.5 Cormorant,
     serif;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.13em;
+  color: #805d47;
   transition:
-    opacity 1s,
+    opacity 1.3s,
     filter 1.3s;
-  opacity: 0.88;
 }
 .tagline.departed {
   opacity: 0;
@@ -179,53 +146,77 @@ button {
   position: absolute;
   left: 50%;
   top: var(--invitation-y);
-  width: 260px;
-  height: 180px;
+  width: clamp(240px, 20vw, 340px);
+  aspect-ratio: 1.55;
   transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
 }
 .watercolor {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  transform: scale(1);
-  transition: transform 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  inset: 0;
+  transition:
+    transform 2s cubic-bezier(0.24, 0.67, 0.35, 1),
+    clip-path 2s cubic-bezier(0.24, 0.67, 0.35, 1);
+  clip-path: ellipse(75% 80% at 50% 50%);
+  transform-origin: center;
+}
+.pigment {
+  position: absolute;
+  inset: 0;
+  background: url("/materials/watercolor-bloom.webp") center/contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.pigment-body {
+  opacity: 0.68;
+}
+.pigment-settling {
+  opacity: 0;
+  transform: scale(0.99);
+  transition: opacity 2s;
 }
 .begin {
   position: relative;
-  border: 0;
   background: none;
+  border: 0;
+  padding: 22px 38px;
   font:
-    400 46px/1.5 Pinyon,
+    italic 400 clamp(40px, 3.05vw, 51px)/1.4 Cormorant,
     serif;
-  padding: 24px 42px;
+  letter-spacing: 0.105em;
   transform: rotate(-4deg);
+  color: #644138;
   transition:
-    color 0.4s,
-    transform 0.6s;
+    transform 0.6s,
+    color 0.6s;
 }
 .begin:hover {
-  color: #462f29;
+  color: #452a27;
   transform: rotate(-4deg) translateY(-2px);
 }
 .begin:focus-visible {
-  border-radius: 50%;
+  outline: 1px dashed #65483faa;
+  outline-offset: 8px;
+  border-radius: 45%;
 }
 .awakened .watercolor {
-  transform: scale(0.42);
+  transform: scale(0.28, 0.4);
+  clip-path: ellipse(75% 80% at 50% 50%);
 }
-.awakened .pigment-rose {
-  animation: pigment-breathe 11s ease-in-out infinite alternate;
+.awakened .pigment-body {
+  animation: pigment-drift 13s ease-in-out infinite alternate;
 }
-.awakened .pigment-indigo {
-  animation: pigment-breathe 13s ease-in-out -3s infinite alternate;
-  transform-origin: 150px 100px;
+.awakened .pigment-settling {
+  opacity: 0.12;
+  animation: pigment-wick 17s -5s ease-in-out infinite alternate-reverse;
+}
+.awakened .begin {
+  animation: invitation-dissolve 1.3s both;
+  pointer-events: none;
 }
 .caption-anchor {
   position: absolute;
-  top: calc(var(--invitation-y) + 65px);
+  top: calc(var(--invitation-y) + 68px);
   left: 50%;
   transform: translateX(-50%);
   width: min(85vw, 500px);
@@ -233,7 +224,7 @@ button {
 }
 .caption {
   font:
-    italic 400 25px/1.5 Cormorant,
+    italic 400 24px/1.5 Cormorant,
     serif;
   margin: 0;
   min-height: 42px;
@@ -247,7 +238,7 @@ button {
   border: 0;
   background: none;
   font:
-    italic 18px/1.7 Cormorant,
+    italic 19px/1.7 Cormorant,
     serif;
   padding: 5px 12px;
   text-underline-offset: 5px;
@@ -266,11 +257,11 @@ button {
   width: 100%;
   min-width: 0;
   border: 0;
-  border-bottom: 1px solid #65483f55;
+  border-bottom: 1px solid #65483f66;
   border-radius: 0;
   background: transparent;
   font:
-    italic 24px Cormorant,
+    italic 25px Cormorant,
     serif;
   padding: 8px 4px;
 }
@@ -297,7 +288,7 @@ button {
     italic 13px Cormorant,
     serif;
   letter-spacing: 0.1em;
-  color: #79675c;
+  color: #6f5749;
 }
 .return-control {
   position: absolute;
@@ -316,97 +307,129 @@ button {
   white-space: nowrap;
   border: 0;
 }
-[data-phase="absorbing"] .ink-letters {
-  animation: ink-arrival 1.4s both;
-}
-@keyframes ink-arrival {
+@keyframes ink-reveal {
   0% {
     clip-path: inset(0 100% 0 0);
-    opacity: 0.1;
     filter: url(#ink-density) blur(3px);
-  }
-  55% {
-    opacity: 0.7;
+    opacity: 0.2;
   }
   100% {
-    clip-path: inset(0 -5% 0 -5%);
+    clip-path: inset(-15% -10%);
+    filter: url(#ink-density);
     opacity: 1;
-    filter: url(#ink-density) blur(0);
   }
 }
-@keyframes pigment-breathe {
+@keyframes ink-absorb {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    clip-path: inset(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    clip-path: inset(42% 0);
+  }
+}
+@keyframes invitation-dissolve {
+  to {
+    opacity: 0;
+    filter: blur(5px);
+    clip-path: inset(50% 0);
+  }
+}
+@keyframes pigment-drift {
   from {
-    transform: scale(0.97) translate(-2px, 1px);
-    opacity: 0.8;
+    transform: scale(0.98) rotate(-1deg);
+    opacity: 0.66;
   }
   to {
-    transform: scale(1.035) translate(2px, -1px);
-    opacity: 1;
+    transform: scale(1.025) rotate(1deg);
+    opacity: 0.77;
   }
 }
 @media (max-width: 600px) {
   .experience {
-    --name-y: 35% !important;
-    --invitation-y: 66% !important;
+    --name-y: 37% !important;
+    --invitation-y: 66.5% !important;
+  }
+  .paper {
+    background-image: url("/materials/cotton-paper-mobile.webp");
+    background-size: 100% 100%;
   }
   .name-anchor {
-    height: 180px;
-    width: 90vw;
+    width: 91vw;
+    height: 190px;
   }
-  .ink-wordmark {
-    font-size: clamp(70px, 23vw, 96px);
+  .wordmark-artwork {
+    width: min(88vw, 400px);
   }
   .personal-name {
-    font-size: 90px;
+    font-size: 76px;
   }
   .long-name {
-    font-size: 42px;
+    font-size: 38px;
   }
   .very-long-name {
-    font-size: 28px;
+    font-size: 25px;
   }
   .tagline {
-    top: 47%;
-    font-size: 24px;
-    letter-spacing: 0.065em;
+    top: 49.5%;
+    font-size: 25px;
+    letter-spacing: 0.075em;
   }
   .invitation-anchor {
-    width: 230px;
-    height: 160px;
+    width: 238px;
   }
   .begin {
-    font-size: 42px;
+    font-size: 43px;
+    padding: 20px 33px;
   }
   .caption-anchor {
     top: calc(var(--invitation-y) + 60px);
   }
-  .edge-wash-north {
-    opacity: 0.16;
-  }
-  .edge-wash-south {
-    opacity: 0.17;
-  }
 }
 @media (max-height: 600px) {
   .experience {
-    --name-y: 30% !important;
-    --invitation-y: 64% !important;
+    --name-y: 31% !important;
+    --invitation-y: 68% !important;
     min-height: 360px;
   }
-  .tagline {
-    top: 43%;
+  .name-anchor {
+    height: 150px;
   }
-  .ink-wordmark {
-    font-size: 90px;
+  .wordmark-artwork {
+    width: min(38vw, 400px);
+  }
+  .personal-name {
+    font-size: 70px;
+  }
+  .long-name {
+    font-size: 35px;
+  }
+  .very-long-name {
+    font-size: 24px;
+  }
+  .tagline {
+    top: 46%;
+    font-size: 23px;
+  }
+  .invitation-anchor {
+    width: 210px;
   }
   .caption-anchor {
-    top: calc(var(--invitation-y) + 42px);
+    top: calc(var(--invitation-y) + 33px);
+  }
+  .caption {
+    font-size: 21px;
+    min-height: 30px;
   }
   .demo-note {
-    bottom: 12px;
+    bottom: 10px;
+    font-size: 12px;
   }
   .name-form {
-    margin-top: 0;
+    margin: 0 auto;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -421,46 +444,13 @@ button {
   }
 }
 
-.ink-wordmark {
-  position: relative;
-}
-.absorbing-wordmark {
-  position: absolute;
-  inset: 0;
-  display: block;
-  font-size: clamp(104px, 10.8vw, 170px);
-  filter: url(#ink-density);
-  animation: ink-absorb 1.4s both;
-  pointer-events: none;
-}
-.awakened .begin {
-  animation: invitation-dissolve 1.3s both;
-  pointer-events: none;
-}
-[data-phase="absorbing"] .ink-letters {
-  animation-delay: 0.35s;
-}
-@keyframes ink-absorb {
-  0% {
-    opacity: 1;
-    clip-path: inset(0);
-    filter: url(#ink-density) blur(0);
+@keyframes pigment-wick {
+  from {
+    transform: scale(0.98) rotate(-1deg);
+    opacity: 0.06;
   }
-  100% {
-    opacity: 0;
-    clip-path: inset(45% 0 45% 0);
-    filter: url(#ink-density) blur(5px);
-  }
-}
-@keyframes invitation-dissolve {
   to {
-    opacity: 0;
-    filter: blur(5px);
-    clip-path: inset(50% 0 50% 0);
-  }
-}
-@media (max-width: 600px) {
-  .absorbing-wordmark {
-    font-size: clamp(70px, 23vw, 96px);
+    transform: scale(1.025) rotate(1deg);
+    opacity: 0.14;
   }
 }

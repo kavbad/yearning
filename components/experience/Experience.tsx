@@ -77,27 +77,34 @@ export function Experience() {
       <PaperSurface />
       <svg className="ink-filters" aria-hidden="true">
         <defs>
-          <filter id="ink-density" x="-15%" y="-30%" width="130%" height="160%">
+          <filter
+            id="ink-density"
+            x="-10%"
+            y="-20%"
+            width="120%"
+            height="140%"
+            colorInterpolationFilters="sRGB"
+          >
             <feTurbulence
               type="fractalNoise"
-              baseFrequency=".06 .24"
+              baseFrequency=".12 .22"
               numOctaves="3"
               seed="12"
-              result="noise"
+              result="fiber"
             />
             <feDisplacementMap
               in="SourceGraphic"
-              in2="noise"
-              scale=".75"
-              result="ink"
+              in2="fiber"
+              scale=".65"
+              result="lettering"
             />
             <feColorMatrix
-              in="noise"
+              in="fiber"
               type="matrix"
-              values="0 0 0 0 .4 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .3 .7"
+              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .35 .65"
               result="density"
             />
-            <feComposite in="density" in2="ink" operator="in" />
+            <feComposite in="lettering" in2="density" operator="in" />
           </filter>
         </defs>
       </svg>
@@ -114,6 +121,7 @@ export function Experience() {
           <button
             disabled={active}
             className="begin"
+            aria-describedby="demo-disclosure"
             onClick={() => dispatch({ type: "BEGIN" })}
           >
             Begin
@@ -170,10 +178,10 @@ export function Experience() {
           </form>
         )}
       </div>
-      <p className="demo-note">
+      <p id="demo-disclosure" className={active ? "demo-note" : "sr-only"}>
         {active
           ? "A quiet study · no audio is recorded"
-          : "An interactive study"}
+          : "Interactive visual study. Voice is mocked; no audio is recorded."}
       </p>
       {state.phase === "conversing" && (
         <button

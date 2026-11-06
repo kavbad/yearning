@@ -1,10 +1,18 @@
-# Missing approved assets
+# Approved-source asset inventory
 
-1. Original approved landing mockup image, full resolution, preferably with original color profile. The conversation image is available visually but not as a local source file for automated pixel comparison.
-2. Isolated approved `yearning.` calligraphic wordmark, preferably SVG with outlined paths or transparent high-resolution PNG; include provenance and usage rights.
-3. Approved cotton-paper texture: seamless full-resolution source and license. Current procedural grain is a temporary approximation. Heavy torn-paper borders in the reference are intentionally restrained per the written spec.
-4. Approved watercolor orb: transparent source layers, masks, pigment states, animation reference and license. Current seeded SVG wash is original implementation artwork, not the approved asset.
-5. Approved arbitrary-name font, with webfont license and fallback-script requirements. Pinyon Script and Cormorant are temporary OFL substitutes; no exact font reconstruction is claimed.
-6. Future M3 curated sketches and stroke guides (not required for the M1 screen).
+The founder supplied the original landing image in the conversation and the complete specification as an attachment. The first implementation missed that visual guidance and was rejected. The revision now actively follows the image; missing isolated source files are not being used as a reason to simplify the experience.
 
-No approved assets have been overwritten. Add approved originals to public/references; record provenance and compare before replacing the temporary implementation. Founder approval is required for the M1 visual gate.
+## Current candidate assets
+
+See public/materials for separately committed generated paper, portrait paper, transparent ink wordmark and transparent watercolor. They are newly generated review illustrations with documented provenance. They are not original approved brand assets. Supporting and arbitrary-name typography uses licensed OFL Cormorant Garamond Italic. The earlier Pinyon treatment is retired from the UI.
+
+## Originals still useful for exact reproduction
+
+1. Original full-resolution landing mockup binary and color profile, for automated comparison at its 1671×941 dimensions. It has been inspected visually in the conversation.
+2. Approved isolated `yearning.` wordmark, ideally outlined SVG or transparent PNG, with provenance and usage rights.
+3. Approved cotton-paper texture and layer sources, with license.
+4. Approved watercolor orb/wash source layers and motion reference, with license.
+5. The intended licensed arbitrary-name font and cross-script fallback guidance. Generated lettering is not a font, and the current live-name font is not claimed to match it exactly.
+6. Future M3 curated sketch assets and ordered stroke guides, outside this M1 correction.
+
+No approved source asset has been overwritten. Do not label a generated candidate or a new screenshot founder-approved until the founder approves it.

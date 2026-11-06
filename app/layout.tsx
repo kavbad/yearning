@@ -7,6 +7,26 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="/materials/yearning-ink.webp" as="image" />
+        <link
+          rel="preload"
+          href="/materials/watercolor-bloom.webp"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="/materials/cotton-paper.webp"
+          as="image"
+          media="(min-width: 601px)"
+        />
+        <link
+          rel="preload"
+          href="/materials/cotton-paper-mobile.webp"
+          as="image"
+          media="(max-width: 600px)"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

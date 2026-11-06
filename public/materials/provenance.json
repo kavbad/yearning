@@ -1,0 +1,38 @@
+[
+  {
+    "file": "cotton-paper.webp",
+    "source": "OpenAI image generation",
+    "sourceFilename": "exec-296edb68-ef85-478b-8d46-e45cfb975aa2.png",
+    "brief": "User-supplied landscape reference; empty deckled cotton-paper material, warm ivory, rose/ochre upper-left and slate/rose/ochre lower-right.",
+    "status": "generated review candidate; not founder-approved",
+    "sha256": "6d1f336605ceb7167e4b78a8c210c51a6a3ad66aece4b9c9f437946b461674d9",
+    "bytes": 183316
+  },
+  {
+    "file": "cotton-paper-mobile.webp",
+    "source": "OpenAI image generation",
+    "sourceFilename": "exec-6ff9e54e-601b-47dc-9334-7f581fab67d8.png",
+    "brief": "Portrait recomposition of generated landscape paper; same physical material, natural fiber scale, clear center.",
+    "status": "generated review candidate; not founder-approved",
+    "sha256": "bdabc6e1b3841c73b509a6840e39581dafe6ce95d450f657727cbde692ca76e6",
+    "bytes": 155676
+  },
+  {
+    "file": "yearning-ink.webp",
+    "source": "OpenAI image generation",
+    "sourceFilename": "exec-93cc4745-6871-4366-82d6-470875e1b4b4.png",
+    "brief": "Isolated transparent yearning. illustration; warm sepia/plum ink variation, irregular density, graceful y and g descenders.",
+    "status": "generated review candidate; not founder-approved",
+    "sha256": "af418121c003633cb1886e9974da245108712ad7490e0dc1c7851d34ab45526e",
+    "bytes": 391792
+  },
+  {
+    "file": "watercolor-bloom.webp",
+    "source": "OpenAI image generation",
+    "sourceFilename": "exec-54334630-453f-42d3-8ba4-522d28533f41.png",
+    "brief": "Isolated transparent watercolor brush wash; dusty rose, ochre, indigo with capillary blooms and mineral granulation.",
+    "status": "generated review candidate; not founder-approved",
+    "sha256": "4f2167e947e9411a9f313c334f47c61509b25b6287bb4623f005ecabecce779d",
+    "bytes": 604704
+  }
+]
