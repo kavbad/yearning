@@ -1,0 +1,25 @@
+name: Quality gates
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck && npm run lint && npm test && npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+        env:
+          CI: "true"
+          PLAYWRIGHT_USE_BUNDLED: "true"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-review-artifacts
+          path: |
+            test-results/
+            playwright-report/
